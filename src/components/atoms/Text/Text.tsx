@@ -18,7 +18,7 @@ const Text = ({ textContent, textWeight, textColor, isSmallSize, isTextUppercase
 
     return(
         <>
-            <p className={getStyle()}>{textContent}</p>
+            <p className={getStyle()}>{textContent || 'Your IP'}</p>
         </>
     )
 }
