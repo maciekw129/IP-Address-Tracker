@@ -1,0 +1,7 @@
+.fourSectionTable {
+    background-color: var(--whiteColor);
+    padding: 25px;
+    border-radius: 10px;
+    display: flex;
+    column-gap: 20px;
+}
