@@ -1,0 +1,10 @@
+.header {
+    background-image: url('../../../images/pattern-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 46px;
+}

@@ -1,9 +1,12 @@
+import { InputProvider } from './context/InputContext';
 import Home from './components/templates/Home/Home';
 
 function App() {
   return (
     <>
-      <Home />
+      <InputProvider>
+        <Home />
+      </InputProvider>
     </>
   );
 }
