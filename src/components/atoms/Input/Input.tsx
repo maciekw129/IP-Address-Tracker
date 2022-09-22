@@ -6,16 +6,16 @@ interface InputProps {
     inputPlaceholder: string;
     inputValue: string;
     setInputValue: Dispatch<SetStateAction<string>>;
-    inputSubmit: () => void;
+    onInputSubmit: () => void;
 }
 
-const Input = ({ inputPlaceholder, inputValue, setInputValue, inputSubmit }: InputProps) => {
+const Input = ({ inputPlaceholder, inputValue, setInputValue, onInputSubmit }: InputProps) => {
     const handleChange = (event: React.FormEvent<HTMLInputElement>): void => {
         setInputValue((event.target as HTMLInputElement).value)
     }
 
     return(
-        <div className="input__container">
+        <div className="input__container center-content">
             <input 
                 className="input"
                 placeholder={inputPlaceholder}
@@ -23,7 +23,7 @@ const Input = ({ inputPlaceholder, inputValue, setInputValue, inputSubmit }: Inp
                 value={inputValue}
                 onInput={handleChange}
             />
-            <button className="input__button" onClick={inputSubmit}>
+            <button className="input__button center-content" onClick={onInputSubmit}>
                 <img src={icon} alt="Arrow button" />
             </button>
         </div>
