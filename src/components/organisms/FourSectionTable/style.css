@@ -5,4 +5,5 @@
     display: flex;
     column-gap: 20px;
     width: 800px;
+    z-index: 99;
 }

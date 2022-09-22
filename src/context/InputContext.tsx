@@ -2,7 +2,7 @@ import React, { createContext, useReducer, useEffect } from "react";
 import axios from 'axios';
 
 type AppState = typeof initialState;
-type Action = { type: "SET_IP_VALUE"; payload: string } | { type: "UPDATE"; payload: { location: string, timezone: string, isp: string }};
+type Action = { type: "SET_IP_VALUE"; payload: string } | { type: "UPDATE"; payload: { location: string, timezone: string, isp: string, lat: number, lng: number }};
 
 interface InputProviderProps {
   children: React.ReactNode;
@@ -12,7 +12,9 @@ const initialState = {
   ip: '192.212.174.101',
   location: '',
   timezone: '',
-  isp: ''
+  isp: '',
+  lat: 0,
+  lng: 0,
 };
 
 const reducer = (state: AppState, action: Action) => {
@@ -28,6 +30,8 @@ const reducer = (state: AppState, action: Action) => {
         location: action.payload.location,
         timezone: action.payload.timezone,
         isp: action.payload.isp,
+        lat: action.payload.lat,
+        lng: action.payload.lng
       }
     default:
       return state;
@@ -40,13 +44,16 @@ function InputProvider({ children }: InputProviderProps) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    axios.get(`https://geo.ipify.org/api/v2/country?apiKey=at_6FrceOlYhDtHKCISJIVVOTEvBfD7M&ipAddress=${state.ip}`)
+    axios.get(`https://geo.ipify.org/api/v2/country,city?apiKey=at_6FrceOlYhDtHKCISJIVVOTEvBfD7M&ipAddress=${state.ip}`)
     .then(response => {
+      console.log(response);
       const data = response.data;
       dispatch({ type: "UPDATE", payload: {
         location: `${data.location.country}, ${data.location.region}`, 
         timezone: data.location.timezone, 
-        isp: data.isp
+        isp: data.isp,
+        lat: data.location.lat,
+        lng: data.location.lng,
       }});
     })
   }, [state.ip])

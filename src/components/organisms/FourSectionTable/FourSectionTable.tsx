@@ -5,12 +5,18 @@ import TableSection from "../../molecules/TableSection/TableSection";
 
 const FourSectionTable = () => {
     const { state } = useContext(InputContext);
+    const tableSections: [string, string][] = [
+        ['IP ADDRESS', state.ip], 
+        ['LOCATION', state.location], 
+        ['TIMEZONE', state.timezone], 
+        ['ISP', state.isp]
+    ];
 
     return(
         <div className="fourSectionTable">
-            {Object.keys(state).map((key, index) => {
+            {tableSections.map((section, index) => {
                return (
-                <TableSection key={index} sectionTitle={key} sectionValue={state[key as keyof typeof state]} />
+                <TableSection key={index} sectionTitle={section[0]} sectionValue={section[1]} />
                ) 
             })}
         </div>
