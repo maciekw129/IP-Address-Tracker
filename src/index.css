@@ -1,0 +1,28 @@
+:root {
+    --whiteColor: #ffffff;
+    --veryDarkGrayColor: hsl(0, 0%, 17%);
+    --darkGrayColor: hsl(0, 0%, 59%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+.fn-wgh-400 {
+    font-weight: 400;
+}
+
+.fn-wgh-500 {
+    font-weight: 500;
+}
+
+.fn-wgh-700 {
+    font-weight: 700;
+}
+
+.fn-size-18 {
+    font-size: 18px;
+}
