@@ -1,0 +1,22 @@
+.input__container {
+    margin: 36px 0;
+    width: 100%;
+}
+
+.input {
+    border-radius: 15px 0 0 15px;
+    padding: 12.5px 20px;
+    border: 1px solid var(--veryDarkGrayColor);
+    max-width: 400px;
+    width: 100%;
+}
+
+.input__button {
+    height: 43px;
+    border: none;
+    background-color: var(--veryDarkGrayColor);
+    width: 50px;
+    border-radius: 0 15px 15px 0;
+    cursor: pointer;
+}
+
