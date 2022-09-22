@@ -2,7 +2,7 @@ import React, { createContext, useReducer, useEffect } from "react";
 import axios from 'axios';
 
 type AppState = typeof initialState;
-type Action = { type: "SET_IP_VALUE"; payload: string };
+type Action = { type: "SET_IP_VALUE"; payload: string } | { type: "UPDATE"; payload: { location: string, timezone: string, isp: string }};
 
 interface InputProviderProps {
   children: React.ReactNode;
@@ -22,6 +22,13 @@ const reducer = (state: AppState, action: Action) => {
         ...state,
         ip: action.payload,
       };
+    case "UPDATE":
+      return {
+        ...state,
+        location: action.payload.location,
+        timezone: action.payload.timezone,
+        isp: action.payload.isp,
+      }
     default:
       return state;
   }
@@ -36,11 +43,13 @@ function InputProvider({ children }: InputProviderProps) {
     axios.get(`https://geo.ipify.org/api/v2/country?apiKey=at_6FrceOlYhDtHKCISJIVVOTEvBfD7M&ipAddress=${state.ip}`)
     .then(response => {
       const data = response.data;
-      state.location = `${data.location.country}, ${data.location.region}`;
-      state.timezone = data.location.timezone;
-      state.isp = data.isp;
+      dispatch({ type: "UPDATE", payload: {
+        location: `${data.location.country}, ${data.location.region}`, 
+        timezone: data.location.timezone, 
+        isp: data.isp
+      }});
     })
-  })
+  }, [state.ip])
 
   return (
     <InputContext.Provider value={{ state, dispatch }}>
