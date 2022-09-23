@@ -2,7 +2,9 @@ import React, { createContext, useReducer, useEffect } from "react";
 import axios from 'axios';
 
 type AppState = typeof initialState;
-type Action = { type: "SET_IP_VALUE"; payload: string } | { type: "UPDATE"; payload: { location: string, timezone: string, isp: string, lat: number, lng: number }};
+type Action = { type: "SET_IP_VALUE"; payload: string } | 
+{ type: "UPDATE"; payload: { location: string, timezone: string, isp: string, lat: number, lng: number }} |
+{ type: "RESET" };
 
 interface InputProviderProps {
   children: React.ReactNode;
@@ -32,6 +34,13 @@ const reducer = (state: AppState, action: Action) => {
         isp: action.payload.isp,
         lat: action.payload.lat,
         lng: action.payload.lng
+      };
+    case "RESET":
+      return {
+        ...state,
+        location: '-',
+        timezone: '-',
+        isp: '-',
       }
     default:
       return state;
@@ -55,6 +64,9 @@ function InputProvider({ children }: InputProviderProps) {
         lat: data.location.lat,
         lng: data.location.lng,
       }});
+    })
+    .catch(() => {
+      dispatch({ type: "RESET" });
     })
   }, [state.ip])
 
