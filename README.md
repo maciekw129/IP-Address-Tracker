@@ -5,7 +5,7 @@
 * [App Presentation](#app-presentation)
 * [Project Status](#project-status)
 ## About
-Web app based on project on Frontend Mentor site:https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0/hub/ip-address-tracker-jSo_bZWyph . It's tracking location on map based on provided IP address. It uses IP Geolocation API: https://geo.ipify.org/ and Leaflet map: https://leafletjs.com/.
+Web app based on project from Frontend Mentor site:https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0/hub/ip-address-tracker-jSo_bZWyph . It's tracking location on map based on provided IP address. It uses IP Geolocation API: https://geo.ipify.org/ and Leaflet map: https://leafletjs.com/.
 
 <b>Site is published on: https://ip-address-tracker-maciekw129.netlify.app/</b>
 ## Technologies:
